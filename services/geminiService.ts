@@ -35,6 +35,7 @@ export const sendMapMessage = async (message: string, location?: { lat: number; 
   
   const config: any = {
     tools: [{ googleMaps: {} }],
+    thinkingConfig: { thinkingBudget: 32768 }, // Enable thinking mode with max budget
   };
 
   if (location) {
@@ -49,7 +50,7 @@ export const sendMapMessage = async (message: string, location?: { lat: number; 
   }
 
   const response = await ai.models.generateContent({
-    model: "gemini-2.5-flash",
+    model: "gemini-3-pro-preview", // Use the pro model for complex reasoning
     contents: message,
     config: config,
   });
