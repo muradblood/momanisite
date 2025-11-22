@@ -1,0 +1,7 @@
+{
+  "name": "Momeni & Hyasat Hub",
+  "description": "A professional dashboard for Momeni & Hyasat Foundation featuring AI Logo Generation and Location-based Booking Services.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
