@@ -1,7 +1,8 @@
 
 export enum AppTab {
   HOME = 'HOME',
-  BOOKING = 'BOOKING'
+  BOOKING = 'BOOKING',
+  VOICE = 'VOICE'
 }
 
 export interface ChatMessage {

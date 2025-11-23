@@ -2,8 +2,9 @@
 import React, { useState } from 'react';
 import Home from './components/Home';
 import BookingCalendar from './components/BookingCalendar';
+import VoiceGenerator from './components/VoiceGenerator';
 import { AppTab } from './types';
-import { Terminal, Home as HomeIcon, Menu, X, CalendarDays } from 'lucide-react';
+import { Terminal, Home as HomeIcon, Menu, X, CalendarDays, Mic } from 'lucide-react';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<AppTab>(AppTab.HOME);
@@ -52,6 +53,17 @@ const App: React.FC = () => {
               <CalendarDays className="w-4 h-4" />
               حجز موعد
             </button>
+            <button
+              onClick={() => setActiveTab(AppTab.VOICE)}
+              className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2
+                ${activeTab === AppTab.VOICE 
+                  ? 'bg-white text-blue-700 shadow-md shadow-slate-200/50 ring-1 ring-slate-100' 
+                  : 'text-slate-500 hover:text-slate-900 hover:bg-white/50'
+                }`}
+            >
+              <Mic className="w-4 h-4" />
+              ستوديو الصوت
+            </button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -82,6 +94,14 @@ const App: React.FC = () => {
               <CalendarDays className="w-5 h-5" />
               حجز موعد
             </button>
+            <button
+              onClick={() => { setActiveTab(AppTab.VOICE); setMobileMenuOpen(false); }}
+              className={`w-full p-4 rounded-xl text-right font-bold transition-colors flex items-center gap-3
+                ${activeTab === AppTab.VOICE ? 'bg-blue-50 text-blue-700' : 'text-slate-600 hover:bg-slate-50'}`}
+            >
+              <Mic className="w-5 h-5" />
+              ستوديو الصوت
+            </button>
           </div>
         )}
       </header>
@@ -98,6 +118,10 @@ const App: React.FC = () => {
                 <BookingCalendar />
              </div>
           </div>
+        )}
+
+        {activeTab === AppTab.VOICE && (
+          <VoiceGenerator />
         )}
       </main>
 
@@ -119,6 +143,7 @@ const App: React.FC = () => {
               <ul className="space-y-2 text-sm">
                 <li><button onClick={() => setActiveTab(AppTab.HOME)} className="hover:text-blue-400 transition-colors">الرئيسية</button></li>
                 <li><button onClick={() => setActiveTab(AppTab.BOOKING)} className="hover:text-blue-400 transition-colors">حجز موعد</button></li>
+                <li><button onClick={() => setActiveTab(AppTab.VOICE)} className="hover:text-blue-400 transition-colors">ستوديو الصوت</button></li>
               </ul>
             </div>
             <div>

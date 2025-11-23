@@ -30,6 +30,28 @@ export const generateLogo = async (prompt: string, aspectRatio: string): Promise
   return `data:image/jpeg;base64,${base64ImageBytes}`;
 };
 
+export const generateSpeech = async (text: string, voiceName: string = 'Kore'): Promise<string> => {
+  const ai = getAiClient();
+  const response = await ai.models.generateContent({
+    model: "gemini-2.5-flash-preview-tts",
+    contents: { parts: [{ text }] },
+    config: {
+      responseModalities: ['AUDIO'],
+      speechConfig: {
+        voiceConfig: {
+          prebuiltVoiceConfig: { voiceName },
+        },
+      },
+    },
+  });
+
+  const base64Audio = response.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+  if (!base64Audio) {
+    throw new Error("Failed to generate speech");
+  }
+  return base64Audio;
+};
+
 export const sendMapMessage = async (message: string, location?: { lat: number; lng: number }) => {
   const ai = getAiClient();
   
