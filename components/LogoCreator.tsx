@@ -14,12 +14,12 @@ const ASPECT_RATIOS = [
 ];
 
 const STYLE_OPTIONS = [
-  { value: '', label: 'تلقائي (AI Choice)' },
-  { value: 'modern, sleek, futuristic, clean lines', label: 'عصري (Modern)' },
-  { value: 'minimalist, simple, flat design, negative space', label: 'بسيط (Minimalist)' },
-  { value: 'classic, vintage, retro, elegant, serif fonts', label: 'كلاسيكي (Classic)' },
-  { value: 'abstract, geometric shapes, creative, artistic', label: 'تجريدي (Abstract)' },
-  { value: 'playful, fun, cartoonish, rounded, friendly', label: 'مرح (Playful)' },
+  { value: '', label: 'تلقائي (AI Choice)', desc: 'يترك للنموذج حرية اختيار الأسلوب الأنسب بناءً على وصفك.' },
+  { value: 'modern, sleek, futuristic, clean lines', label: 'عصري (Modern)', desc: 'يتميز بالخطوط النظيفة، البساطة، والمظهر المستقبلي الأنيق.' },
+  { value: 'minimalist, simple, flat design, negative space', label: 'بسيط (Minimalist)', desc: 'يركز على العناصر الأساسية، المساحات الفارغة، والتجريد البصري.' },
+  { value: 'classic, vintage, retro, elegant, serif fonts', label: 'كلاسيكي (Classic)', desc: 'مظهر تقليدي، أنيق، يوحي بالفخامة والعراقة باستخدام خطوط كلاسيكية.' },
+  { value: 'abstract, geometric shapes, creative, artistic', label: 'تجريدي (Abstract)', desc: 'أشكال هندسية غير مألوفة، إبداعية، تعبر عن المفاهيم بشكل فني.' },
+  { value: 'playful, fun, cartoonish, rounded, friendly', label: 'مرح (Playful)', desc: 'ألوان زاهية، خطوط منحنية، وشخصية ودودة وجذابة.' },
 ];
 
 const COLOR_OPTIONS = [
@@ -76,6 +76,8 @@ const LogoCreator: React.FC = () => {
     }
   };
 
+  const selectedStyleDesc = STYLE_OPTIONS.find(opt => opt.value === stylePreset)?.desc;
+
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-8">
       <div className="text-center space-y-2">
@@ -122,6 +124,11 @@ const LogoCreator: React.FC = () => {
                 <ChevronDown className="w-4 h-4" />
               </div>
             </div>
+            {selectedStyleDesc && (
+              <p className="text-xs text-slate-500 mt-2 bg-slate-50 p-2 rounded-lg border border-slate-100 animate-fade-in">
+                {selectedStyleDesc}
+              </p>
+            )}
           </div>
 
           {/* Color Palette Selection */}
