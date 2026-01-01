@@ -296,7 +296,7 @@ This is a private project for Momeni & Hyasat Foundation. For inquiries, please 
 
 ## 📄 License
 
-Copyright © 2026 Momeni & Hyasat Foundation. All rights reserved.
+Copyright © 2025 Momeni & Hyasat Foundation. All rights reserved.
 
 ---
 
