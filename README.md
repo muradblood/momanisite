@@ -68,7 +68,7 @@ npm install
 Create a `.env.local` file in the root directory:
 
 ```env
-API_KEY=your_gemini_api_key_here
+GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
 > **Note:** You can obtain a Gemini API key from [Google AI Studio](https://ai.google.dev/). The key is required for all AI-powered features.
@@ -205,7 +205,7 @@ Build tool settings are in `vite.config.ts`, including:
 
 | Variable | Description | Required |
 |----------|-------------|----------|
-| `API_KEY` | Gemini API key for AI features | Yes |
+| `GEMINI_API_KEY` | Gemini API key for AI features | Yes |
 
 ---
 
@@ -251,7 +251,7 @@ The `dist` folder can be deployed to any static hosting service:
 
 ### Environment Variables in Production
 
-Ensure your hosting platform has the `API_KEY` environment variable configured.
+Ensure your hosting platform has the `GEMINI_API_KEY` environment variable configured.
 
 ---
 
@@ -260,7 +260,7 @@ Ensure your hosting platform has the `API_KEY` environment variable configured.
 ### Common Issues
 
 **Issue:** "API Key not found" error
-- **Solution:** Ensure `.env.local` file exists with `API_KEY=your_key`
+- **Solution:** Ensure `.env.local` file exists with `GEMINI_API_KEY=your_key`
 - Restart the dev server after adding environment variables
 
 **Issue:** Voice Generator audio doesn't play
